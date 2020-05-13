@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages= {"com.margarita.web.mapper"})
+@MapperScan(basePackages= {"com.margarita.web.mappers"})
 @EnableTransactionManagement
 public class MybatisConfig {
     @Bean
