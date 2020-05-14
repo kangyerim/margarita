@@ -12,11 +12,11 @@
 
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
+          안녕 vue~
         </h1>
 
         <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
+          run을 돌리지 않고 있어도 돌아가요~~~ 가상 돔
           <br>please join our online
           <a
             href="https://community.vuetifyjs.com"
@@ -30,7 +30,7 @@
         cols="12"
       >
         <h2 class="headline font-weight-bold mb-3">
-          What's next?
+          신기한 뷰의 세계
         </h2>
 
         <v-row justify="center">
