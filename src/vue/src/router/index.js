@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Join from '../components/member/Join'
 import Login from '../components/member/Login'
 import Calculator from "../components/common/Calculator";
+import VuexCounter from "../components/common/VuexCounter"
 import Counter from "../components/common/Counter"
 import Register from '../components/member/Register'
 import List from '../components/member/List'
@@ -18,6 +19,7 @@ export default new Router({
         {path:'/join', component: Join},
         {path:'/login', component: Login},
         {path:'/calculator', component: Calculator},
+        {path: '/vuexCounter', component: VuexCounter},
         {path: '/counter', component: Counter},
         {path: '/register', component: Register},
         {path: '/list', component: List},
