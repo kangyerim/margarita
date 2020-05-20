@@ -9,10 +9,10 @@
 
         <div class="container">
             <label><b>Username</b></label>
-            <input type="text" @keyup.enter="moveToPassword" v-model="userid" name="userid" required>
+            <input v-model="userid"  type="text" @keyup.enter="moveToPassword" required>
             <h3>입력한 아이디 : {{userid}}</h3>
             <label><b>Password</b></label>
-            <input type="password" @keyup.enter="login" v-model="password" name="password" required>
+            <input v-model="password" type="password" @keyup.enter="login"  required>
             <h3>입력된 비번 : {{password}}</h3>
             <button @click="login" type="submit">Login</button>
             <label>
@@ -41,7 +41,8 @@ export default {
             document.getElementById('password').focus()
         },
         login(){
-
+            this.$store.dispatch('player/login',
+                {playerId : this.userid, backNo : this.password})
         }
     }
 }

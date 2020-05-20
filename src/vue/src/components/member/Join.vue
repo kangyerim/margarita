@@ -83,8 +83,9 @@
             }
         },
         methods: mapActions([
-            'join'
+            'join',
         ])
+
     }
 </script>
 
