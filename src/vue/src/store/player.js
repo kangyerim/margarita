@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../router'
 const state = {
-    context : 'http://localhost:3000/',
+    context : 'http://localhost:3000',
     player : {},
     fail : false,
     auth : false
@@ -9,19 +9,18 @@ const state = {
 
 const actions = {
     async login({commit},payload){
-        const url = state.context + `players/${payload.playerId}/access`
+      const url = state.context + `/players/${payload.playerId}/access`
         const headers = {
-            authorization : 'JWT fefege..',
-            Accept : 'application/json',
+            authorization: 'JWT fefege..',
+            Accept: 'application/json',
             'Content-Type': 'application/json'
         }
-
         axios.post(url, payload, headers)
             .then(({data})=>{
                 if(data.result) {
                     commit('LOGIN_COMMIT',data)
                 } else {
-                    commit('fail_commit')
+                    commit('FAIL_COMMIT')
                 }
             })
             .catch(()=>{
@@ -29,8 +28,8 @@ const actions = {
                 state.fail=true})
     }
     ,
-    async join({commit}){
-        commit('join')
+    async logout({commit}){
+        commit('LOGOUT_COMMIT')
     }
 }
 const mutations = {
@@ -40,12 +39,20 @@ const mutations = {
         localStorage.setItem('token', data.token)
         localStorage.setItem('playerId', data.player.playerId)
         if(data.player.teamId !== 'K01'){
-            alert('일반 사용자')
+            alert('일반 사 용자')
             router.push('/')
         }else{
             alert('관리 자')
-            /*관리자*/
+            router.push('/')
         }
+    },
+    FAIL_COMMIT(state) {
+        state.fail = true
+    },
+    LOGOUT_COMMIT(state) {
+        localStorage.clear()
+        state.auth = false
+        state.player = {}
     }
 }
 const getters = {

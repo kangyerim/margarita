@@ -1,8 +1,6 @@
 <template>
     <div>
     <h2>Login Form</h2>
-
-    <form method="post">
         <div class="imgcontainer">
             <img src="https://img.etoday.co.kr/pto_db/2018/01/600/20180118112232_1176966_600_447.jpg" alt="Avatar" class="avatar">
         </div>
@@ -24,7 +22,6 @@
             <button type="button" class="cancelbtn">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
-    </form>
     </div>
 </template>
 
@@ -45,7 +42,6 @@ export default {
     },
     methods :{
         login(){
-            alert(this.userid)
             this.$store.dispatch('player/login',
                 {playerId : '2000003', backNo : '40'})
         },
