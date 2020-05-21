@@ -17,4 +17,38 @@
             height, weight
         from player
     </select>
+
+    <select id="selectOne" resultType="com.margarita.web.domains.PlayerDTO"
+                            parameterType="string">
+        select player_id playerId,
+            team_id teamId,
+            player_name playerName,
+            e_player_name ePlayerName,
+            nickname,
+            join_yyyy joinYyyy,
+            position,
+            nation,
+            birth_date birthDate,solar,
+            back_no backNo,
+            height, weight
+        from player
+        where player_id like #{playerId}
+    </select>
+
+    <select id="login" resultType="com.margarita.web.domains.PlayerDTO"
+                        parameterType="com.margarita.web.domains.PlayerDTO">
+        select player_id playerId,
+            team_id teamId,
+            player_name playerName,
+            e_player_name ePlayerName,
+            nickname,
+            join_yyyy joinYyyy,
+            position,
+            nation,
+            birth_date birthDate,solar,
+            back_no backNo,
+            height, weight
+        from player
+        where player_id like #{playerId} and back_no like #{backNo}
+    </select>
 </mapper>

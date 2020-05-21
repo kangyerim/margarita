@@ -7,4 +7,5 @@ import java.util.List;
 @Repository
 public interface PlayerMapper {
     public List<PlayerDTO> selectAll();
+    public PlayerDTO login(PlayerDTO player);
 }

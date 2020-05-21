@@ -1,43 +1,51 @@
 import axios from 'axios'
+import router from '../router'
 const state = {
+    context : 'http://localhost:3000/',
     player : {},
     fail : false,
     auth : false
 }
 
 const actions = {
-    async login({commit}){
+    async login({commit},payload){
+        const url = state.context + `players/${payload.playerId}/access`
         const headers = {
-            'Content-Type': 'text/plain'
+            authorization : 'JWT fefege..',
+            Accept : 'application/json',
+            'Content-Type': 'application/json'
         }
 
-        axios.post('', player, header)
+        axios.post(url, payload, headers)
             .then(({data})=>{
-                commit('login_commit',data)
+                if(data.result) {
+                    commit('LOGIN_COMMIT',data)
+                } else {
+                    commit('fail_commit')
+                }
             })
             .catch(()=>{
+                alert('서버 전송 실패')
                 state.fail=true})
     }
     ,
     async join({commit}){
-        alert('counter.js alert')
         commit('join')
     }
 }
 const mutations = {
-    login_commit(state, data){
+    LOGIN_COMMIT(state, data){
         state.auth=true
         state.player=data.player
         localStorage.setItem('token', data.token)
         localStorage.setItem('playerId', data.player.playerId)
-        if(data.player.auth === 'USER'){
+        if(data.player.teamId !== 'K01'){
             alert('일반 사용자')
-            /*일반 사용자*/
+            router.push('/')
         }else{
             alert('관리 자')
             /*관리자*/
         }
-        alert('로그인 완료:mutations')
     }
 }
 const getters = {
@@ -45,7 +53,7 @@ const getters = {
 }
 export default {
     name : 'player',
-    namespace : true,
+    namespaced : true,
     state,
     actions,
     mutations,
